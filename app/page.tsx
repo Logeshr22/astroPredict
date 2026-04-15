@@ -8,47 +8,41 @@ export default function HomePage() {
   const router = useRouter();
 
   return (
-    <div className="overflow-hidden">
+    <div className="page-wrapper">
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center pt-20 pb-20 px-4">
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute top-20 right-10 w-72 h-72 bg-purple-300 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob"></div>
-          <div
-            className="absolute top-40 left-10 w-72 h-72 bg-pink-300 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob"
-            style={{ animationDelay: "2s" }}
-          ></div>
-          <div
-            className="absolute -bottom-8 left-20 w-72 h-72 bg-indigo-300 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob"
-            style={{ animationDelay: "4s" }}
-          ></div>
+      <section className="hero-section">
+        <div className="hero-background">
+          <div className="blob blob-purple"></div>
+          <div className="blob blob-pink"></div>
+          <div className="blob blob-indigo"></div>
         </div>
 
-        <div className="relative container-tight text-center">
-          <div className="animate-fade-in-up">
-            <div className="badge mb-6 justify-center">
+        <div className="hero-content">
+          <div className="fade-in-up">
+            <div className="badge">
               <Sparkles className="w-4 h-4" />
               <span>AI-Powered Astrology</span>
             </div>
 
-            <h1 className="mb-8 leading-tight">
+            <h1 className="hero-title">
               Find Your
               <br />
               <span className="section-title">Cosmic Match</span>
             </h1>
 
-            <p className="text-xl md:text-2xl text-gray-600 mb-12 max-w-3xl mx-auto leading-relaxed">
+            <p className="hero-description">
               Discover deep compatibility insights using advanced Western &
               Vedic astrology. Know if they're your soulmate before the first
               date.
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-6 justify-center mb-20">
+            <div className="button-group">
               <button
                 onClick={() => router.push("/compatibility")}
                 className="btn-primary"
               >
-                <Sparkles className="w-5 h-5" />
                 Try Free Compatibility Check
+                  {/* <Sparkles/> */}
               </button>
               <button
                 onClick={() => router.push("/register")}
@@ -58,21 +52,21 @@ export default function HomePage() {
               </button>
             </div>
 
-            <div className="grid grid-cols-3 gap-6 max-w-2xl mx-auto pt-8">
+            <div className="stats-grid">
               <div className="glass-card">
-                <Star className="w-6 h-6 text-yellow-500 fill-yellow-500 mx-auto mb-2" />
-                <div className="font-semibold text-gray-900">4.9/5</div>
-                <div className="text-sm text-gray-600">Rating</div>
+                <Star className="glass-card-icon text-yellow-500 fill-yellow-500" />
+                <div className="glass-card-value">4.9/5</div>
+                <div className="glass-card-label">Rating</div>
               </div>
               <div className="glass-card">
-                <Heart className="w-6 h-6 text-red-500 fill-red-500 mx-auto mb-2" />
-                <div className="font-semibold text-gray-900">10,000+</div>
-                <div className="text-sm text-gray-600">Matches</div>
+                <Heart className="glass-card-icon text-red-500 fill-red-500" />
+                <div className="glass-card-value">10,000+</div>
+                <div className="glass-card-label">Matches</div>
               </div>
               <div className="glass-card">
-                <Shield className="w-6 h-6 text-green-500 mx-auto mb-2" />
-                <div className="font-semibold text-gray-900">100%</div>
-                <div className="text-sm text-gray-600">Private</div>
+                <Shield className="glass-card-icon text-green-500" />
+                <div className="glass-card-value">100%</div>
+                <div className="glass-card-label">Private</div>
               </div>
             </div>
           </div>
@@ -80,17 +74,19 @@ export default function HomePage() {
       </section>
 
       {/* Features Section */}
-      <section className="relative py-32 px-4 bg-white/40">
+      <section className="features-section">
         <div className="container-tight">
-          <div className="text-center mb-20">
+          <div className="section-header">
             <span className="section-divider"></span>
-            <h2 className="section-title mb-4">Why Cosmic Match?</h2>
-            <p className="text-gray-600 text-lg max-w-2xl mx-auto">
+            <h2 className="section-title section-header-title">
+              Why Cosmic Match?
+            </h2>
+            <p className="section-description">
               Experience the most accurate astrological compatibility analysis
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-10">
+          <div className="features-grid">
             <FeatureCard
               icon={<Zap className="w-12 h-12 text-purple-600" />}
               title="Dual System Analysis"
@@ -110,59 +106,15 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* How It Works
-      <section className="relative py-24 px-4">
-        <div className="container-tight">
-          <div className="text-center mb-16">
-            <span className="section-divider"></span>
-            <h2 className="section-title mb-4">How It Works</h2>
-            <p className="text-gray-600 text-lg max-w-2xl mx-auto">
-              Four simple steps to discover your cosmic connection
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-4 gap-8">
-            <StepCard
-              number={1}
-              title="Enter Birth Data"
-              description="Your date, time, and place of birth"
-            />
-            <StepCard
-              number={2}
-              title="Add Partner's Info"
-              description="Their birth details for comparison"
-            />
-            <StepCard
-              number={3}
-              title="AI Analysis"
-              description="Advanced calculations in seconds"
-            />
-            <StepCard
-              number={4}
-              title="Get Insights"
-              description="Detailed compatibility report"
-            />
-          </div>
-
-          <div className="mt-16 flex justify-center">
-            <button
-              onClick={() => router.push("/compatibility")}
-              className="btn-primary"
-            >
-              <Heart className="w-5 h-5" />
-              Start Your Analysis
-            </button>
-          </div>
-        </div>
-      </section> */}
-
       {/* Pricing */}
-      <section className="relative py-24 px-4 bg-gradient-to-b from-white/40 to-purple-50/40">
+      <section className="pricing-section">
         <div className="container-tight">
-          <div className="text-center mb-16">
+          <div className="pricing-header">
             <span className="section-divider"></span>
-            <h2 className="section-title mb-2">Choose Your Plan</h2>
-            <p className="text-gray-600 text-lg">
+            <h2 className="section-title pricing-header-title">
+              Choose Your Plan
+            </h2>
+            <p className="pricing-header-description">
               Start free, upgrade anytime with no hidden fees
             </p>
           </div>
@@ -172,13 +124,11 @@ export default function HomePage() {
       </section>
 
       {/* CTA */}
-      <section className="relative py-24 px-4">
+      <section className="cta-section">
         <div className="container-tight">
-          <div className="card-gradient border-2 border-purple-200 text-center max-w-2xl mx-auto">
-            <h2 className="text-4xl font-bold mb-4">
-              Ready to Find Your Cosmic Match?
-            </h2>
-            <p className="text-xl text-gray-600 mb-10 leading-relaxed">
+          <div className="card-gradient">
+            <h2 className="cta-title">Ready to Find Your Cosmic Match?</h2>
+            <p className="cta-description">
               Join thousands who've discovered their astrological compatibility
               and found meaningful connections
             </p>
@@ -207,9 +157,9 @@ function FeatureCard({
 }) {
   return (
     <div className="feature-card">
-      <div className="feature-icon flex justify-center mb-6">{icon}</div>
-      <h3 className="text-2xl font-bold mb-4 text-gray-900">{title}</h3>
-      <p className="text-gray-600 leading-relaxed">{description}</p>
+      <div className="feature-icon">{icon}</div>
+      <h3 className="feature-title">{title}</h3>
+      <p className="feature-description">{description}</p>
     </div>
   );
 }
@@ -226,8 +176,8 @@ function StepCard({
   return (
     <div className="step-card">
       <div className="step-number">{number}</div>
-      <h3 className="text-xl font-bold mb-3 text-gray-900">{title}</h3>
-      <p className="text-gray-600 text-base leading-relaxed">{description}</p>
+      <h3 className="step-title">{title}</h3>
+      <p className="step-description">{description}</p>
     </div>
   );
 }

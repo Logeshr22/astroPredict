@@ -37,10 +37,10 @@ export default function ResultsPage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="text-center">
-          <div className="animate-spin w-16 h-16 border-4 border-purple-600 border-t-transparent rounded-full mx-auto mb-4"></div>
-          <p className="text-gray-600">Analyzing cosmic compatibility...</p>
+      <div className="loading-container">
+        <div className="loading-content">
+          <div className="spinner"></div>
+          <p className="loading-text">Analyzing cosmic compatibility...</p>
         </div>
       </div>
     );
@@ -50,29 +50,31 @@ export default function ResultsPage() {
 
   const scoreColor =
     report.score >= 8
-      ? "text-green-600"
+      ? "excellent"
       : report.score >= 6
-        ? "text-yellow-600"
-        : "text-red-600";
+        ? "good"
+        : "challenging";
 
   return (
-    <div className="min-h-screen py-12 px-4">
-      <div className="max-w-4xl mx-auto">
+    <div className="results-container">
+      <div className="results-wrapper">
         {/* Header */}
-        <div className="card mb-8 text-center">
-          <div className="mb-6">
-            <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-purple-600 to-pink-600 rounded-full mb-4">
+        <div className="report-header">
+          <div>
+            <div className="report-icon">
               <Heart className="w-10 h-10 text-white" />
             </div>
-            <h1 className="text-4xl font-bold mb-2">Compatibility Report</h1>
-            <p className="text-gray-600">Based on Western & Vedic Astrology</p>
+            <h1 className="report-title">Compatibility Report</h1>
+            <p className="report-subtitle">
+              Based on Western & Vedic Astrology
+            </p>
           </div>
 
-          <div className="mb-6">
-            <div className={`text-7xl font-bold mb-2 ${scoreColor}`}>
+          <div className="report-score-section">
+            <div className={`report-score ${scoreColor}`}>
               {report.score}/10
             </div>
-            <p className="text-xl font-semibold">
+            <p className="report-verdict">
               {report.score >= 8
                 ? "🎉 Excellent Match!"
                 : report.score >= 6
@@ -81,9 +83,9 @@ export default function ResultsPage() {
             </p>
           </div>
 
-          <div className="flex justify-center gap-4">
+          <div className="report-actions">
             <button className="btn-primary">
-              <Download className="w-4 h-4 inline mr-2" />
+              <Download className="w-4 h-4" />
               Download PDF
             </button>
             <button
@@ -96,7 +98,7 @@ export default function ResultsPage() {
         </div>
 
         {/* Detailed Analysis */}
-        <div className="space-y-6">
+        <div className="analysis-list">
           {/* Emotional Connection */}
           <AnalysisCard
             icon={<Heart className="w-6 h-6" />}
@@ -134,26 +136,22 @@ export default function ResultsPage() {
           />
 
           {/* Challenges */}
-          <div className="card border-2 border-yellow-200">
-            <div className="flex items-start gap-4 mb-4">
-              <div className="p-3 bg-yellow-100 rounded-lg">
-                <AlertCircle className="w-6 h-6 text-yellow-600" />
+          <div className="challenges-card">
+            <div className="challenges-card-header">
+              <div className="challenges-icon">
+                <AlertCircle />
               </div>
               <div className="flex-1">
-                <h3 className="text-xl font-bold mb-2">Areas to Watch</h3>
-                <p className="text-gray-700 whitespace-pre-line">
-                  {report.challenges}
-                </p>
+                <h3 className="challenges-title">Areas to Watch</h3>
+                <p className="challenges-text">{report.challenges}</p>
               </div>
             </div>
           </div>
 
           {/* AI Interpretation */}
-          <div className="card bg-gradient-to-br from-purple-50 to-pink-50">
-            <h3 className="text-2xl font-bold mb-4">Complete AI Analysis</h3>
-            <p className="text-gray-800 whitespace-pre-line leading-relaxed">
-              {report.aiInterpretation}
-            </p>
+          <div className="ai-analysis-card">
+            <h3 className="ai-analysis-title">Complete AI Analysis</h3>
+            <p className="ai-analysis-text">{report.aiInterpretation}</p>
           </div>
         </div>
       </div>
@@ -162,29 +160,16 @@ export default function ResultsPage() {
 }
 
 function AnalysisCard({ icon, title, score, description, color }: any) {
-  const colorClasses = {
-    purple: "from-purple-600 to-purple-700",
-    blue: "from-blue-600 to-blue-700",
-    pink: "from-pink-600 to-pink-700",
-    green: "from-green-600 to-green-700",
-  };
-
   return (
-    <div className="card">
-      <div className="flex items-start gap-4">
-        <div
-          className={`p-3 bg-gradient-to-br ${colorClasses[color as keyof typeof colorClasses]} text-white rounded-lg`}
-        >
-          {icon}
-        </div>
-        <div className="flex-1">
-          <div className="flex items-center justify-between mb-3">
-            <h3 className="text-xl font-bold">{title}</h3>
-            <span className="text-2xl font-bold text-purple-600">
-              {score}/10
-            </span>
+    <div className="analysis-card">
+      <div className="analysis-card-content">
+        <div className={`analysis-card-icon ${color}`}>{icon}</div>
+        <div className="analysis-card-body">
+          <div className="analysis-card-header">
+            <h3 className="analysis-card-title">{title}</h3>
+            <span className="analysis-card-score">{score}/10</span>
           </div>
-          <p className="text-gray-700 whitespace-pre-line">{description}</p>
+          <p className="analysis-card-text">{description}</p>
         </div>
       </div>
     </div>

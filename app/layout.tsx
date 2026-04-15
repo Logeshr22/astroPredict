@@ -1,6 +1,15 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import "./page.css";
+import "./login/page.css";
+import "./register/page.css";
+import "./dashboard/page.css";
+import "./compatibility/page.css";
+import "./results/page.css";
+import "@/components/Navbar.css";
+import "@/components/PricingCards.css";
+import "@/components/BirthDataForm.css";
 import Navbar from "@/components/Navbar";
 import ClientProviders from "./providers";
 
@@ -20,9 +29,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <Navbar />
-        <main className="min-h-screen">{children}</main>
-        <ClientProviders />
+        <ClientProviders>
+          <Navbar />
+          <main style={{ minHeight: "100vh" }}>{children}</main>
+        </ClientProviders>
       </body>
     </html>
   );

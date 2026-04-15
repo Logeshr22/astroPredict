@@ -37,14 +37,14 @@ export default function CompatibilityPage() {
   };
 
   return (
-    <div className="min-h-screen py-20 px-4">
-      <div className="max-w-2xl mx-auto">
-        <div className="text-center mb-16">
-          <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-purple-600 to-pink-600 rounded-full mb-4">
+    <div className="compatibility-container">
+      <div className="compatibility-wrapper">
+        <div className="compatibility-header">
+          <div className="compatibility-icon">
             <Heart className="w-8 h-8 text-white" />
           </div>
-          <h1 className="text-4xl font-bold mb-4">Compatibility Check</h1>
-          <p className="text-xl text-gray-600">
+          <h1 className="compatibility-title">Compatibility Check</h1>
+          <p className="compatibility-subtitle">
             {step === "person1"
               ? "First, tell us about yourself"
               : "Now, enter your partner's birth details"}
@@ -52,35 +52,31 @@ export default function CompatibilityPage() {
         </div>
 
         {/* Progress Indicator */}
-        <div className="flex items-center justify-center gap-6 mb-12">
-          <div className="flex flex-col items-center">
+        <div className="progress-container">
+          <div className="progress-step">
             <div
-              className={`w-14 h-14 rounded-full flex items-center justify-center font-bold text-lg ${
-                step === "person1"
-                  ? "bg-purple-600 text-white"
-                  : "bg-green-500 text-white"
+              className={`progress-circle ${
+                step === "person1" ? "active" : "completed"
               }`}
             >
               {step === "person1" ? "1" : "✓"}
             </div>
-            <span className="text-xs text-gray-600 mt-2">You</span>
+            <span className="progress-label">You</span>
           </div>
-          <div className="w-12 h-0.5 bg-gray-300"></div>
-          <div className="flex flex-col items-center">
+          <div className="progress-line"></div>
+          <div className="progress-step">
             <div
-              className={`w-14 h-14 rounded-full flex items-center justify-center font-bold text-lg ${
-                step === "person2"
-                  ? "bg-purple-600 text-white"
-                  : "bg-gray-300 text-gray-600"
+              className={`progress-circle ${
+                step === "person2" ? "active" : "inactive"
               }`}
             >
               2
             </div>
-            <span className="text-xs text-gray-600 mt-2">Partner</span>
+            <span className="progress-label">Partner</span>
           </div>
         </div>
 
-        <div className="card mt-8">
+        <div className="form-card">
           {step === "person1" ? (
             <BirthDataForm
               onSubmit={handlePerson1Submit}
@@ -97,7 +93,7 @@ export default function CompatibilityPage() {
           {step === "person2" && (
             <button
               onClick={() => setStep("person1")}
-              className="mt-8 pt-6 border-t border-gray-200 text-purple-600 hover:text-purple-700 font-medium transition-colors"
+              className="form-back-button"
             >
               ← Go back and edit your details
             </button>

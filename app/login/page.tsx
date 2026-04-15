@@ -38,19 +38,19 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center px-4 py-12">
-      <div className="card max-w-md w-full">
-        <div className="text-center mb-8">
-          <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-purple-600 to-pink-600 rounded-full mb-4">
-            <LogIn className="w-8 h-8 text-white" />
+    <div className="login-container">
+      <div className="login-card">
+        <div className="login-header">
+          <div className="login-icon">
+            <LogIn />
           </div>
-          <h1 className="text-3xl font-bold mb-2">Welcome Back</h1>
-          <p className="text-gray-600">Login to access your cosmic insights</p>
+          <h1 className="login-title">Welcome Back</h1>
+          <p className="login-subtitle">Login to access your cosmic insights</p>
         </div>
 
-        <form onSubmit={handleSubmit} className="space-y-4">
-          <div>
-            <label className="block text-sm font-medium mb-2">Email</label>
+        <form onSubmit={handleSubmit} className="login-form">
+          <div className="form-group">
+            <label className="form-label">Email</label>
             <input
               type="email"
               required
@@ -63,8 +63,8 @@ export default function LoginPage() {
             />
           </div>
 
-          <div>
-            <label className="block text-sm font-medium mb-2">Password</label>
+          <div className="form-group">
+            <label className="form-label">Password</label>
             <input
               type="password"
               required
@@ -77,21 +77,14 @@ export default function LoginPage() {
             />
           </div>
 
-          <button
-            type="submit"
-            disabled={loading}
-            className="btn-primary w-full"
-          >
+          <button type="submit" disabled={loading} className="btn-primary">
             {loading ? "Logging in..." : "Login"}
           </button>
         </form>
 
-        <p className="text-center mt-6 text-gray-600">
+        <p className="login-footer">
           Don't have an account?{" "}
-          <Link
-            href="/register"
-            className="text-purple-600 font-semibold hover:underline"
-          >
+          <Link href="/register" className="signup-link">
             Sign up
           </Link>
         </p>

@@ -1,0 +1,153 @@
+/* Compatibility Page Layout */
+.compatibility-container {
+  min-height: 100vh;
+  padding-top: 2rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-bottom: 1rem;
+  background: white;
+}
+
+.compatibility-wrapper {
+  max-width: 42rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Header */
+.compatibility-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.compatibility-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 4rem;
+  height: 4rem;
+  background: linear-gradient(to bottom right, #9333ea, #ec4899);
+  border-radius: 50%;
+  margin-bottom: 1rem;
+}
+
+.compatibility-icon svg {
+  width: 2rem;
+  height: 2rem;
+  color: white;
+}
+
+.compatibility-title {
+  font-size: 2.25rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: #111827;
+}
+
+.compatibility-subtitle {
+  font-size: 1.25rem;
+  color: #4b5563;
+}
+
+/* Progress Indicator */
+.progress-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+}
+
+.progress-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.progress-circle {
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 1.125rem;
+  margin-bottom: 0.5rem;
+}
+
+.progress-circle.active {
+  background: #9333ea;
+  color: white;
+}
+
+.progress-circle.completed {
+  background: #22c55e;
+  color: white;
+}
+
+.progress-circle.inactive {
+  background: #d1d5db;
+  color: #4b5563;
+}
+
+.progress-label {
+  font-size: 0.75rem;
+  color: #4b5563;
+}
+
+.progress-line {
+  width: 3rem;
+  height: 0.125rem;
+  background: #d1d5db;
+}
+
+/* Form Card */
+.form-card {
+  background: white;
+  border-radius: 0.75rem;
+  padding: 2rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  margin-top: 2rem;
+}
+
+.form-back-button {
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #e5e7eb;
+  background: transparent;
+  border: none;
+  color: #9333ea;
+  font-weight: 500;
+  cursor: pointer;
+  transition: color 0.3s ease;
+  text-align: left;
+}
+
+.form-back-button:hover {
+  color: #7e22ce;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .compatibility-container {
+    padding-top: 6rem;
+  }
+
+  .compatibility-header {
+    margin-bottom: 2rem;
+  }
+
+  .compatibility-title {
+    font-size: 1.875rem;
+  }
+
+  .compatibility-subtitle {
+    font-size: 1rem;
+  }
+
+  .form-card {
+    padding: 1.5rem;
+  }
+}

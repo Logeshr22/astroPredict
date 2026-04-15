@@ -43,19 +43,19 @@ export default function RegisterPage() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center px-4 py-12">
-      <div className="card max-w-md w-full">
-        <div className="text-center mb-8">
-          <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-purple-600 to-pink-600 rounded-full mb-4">
-            <UserPlus className="w-8 h-8 text-white" />
+    <div className="register-container">
+      <div className="register-card">
+        <div className="register-header">
+          <div className="register-icon">
+            <UserPlus />
           </div>
-          <h1 className="text-3xl font-bold mb-2">Create Account</h1>
-          <p className="text-gray-600">Start your cosmic journey today</p>
+          <h1 className="register-title">Create Account</h1>
+          <p className="register-subtitle">Start your cosmic journey today</p>
         </div>
 
-        <form onSubmit={handleSubmit} className="space-y-4">
-          <div>
-            <label className="block text-sm font-medium mb-2">Full Name</label>
+        <form onSubmit={handleSubmit} className="register-form">
+          <div className="form-group">
+            <label className="form-label">Full Name</label>
             <input
               type="text"
               required
@@ -68,8 +68,8 @@ export default function RegisterPage() {
             />
           </div>
 
-          <div>
-            <label className="block text-sm font-medium mb-2">Email</label>
+          <div className="form-group">
+            <label className="form-label">Email</label>
             <input
               type="email"
               required
@@ -82,8 +82,8 @@ export default function RegisterPage() {
             />
           </div>
 
-          <div>
-            <label className="block text-sm font-medium mb-2">Password</label>
+          <div className="form-group">
+            <label className="form-label">Password</label>
             <input
               type="password"
               required
@@ -97,10 +97,8 @@ export default function RegisterPage() {
             />
           </div>
 
-          <div>
-            <label className="block text-sm font-medium mb-2">
-              Confirm Password
-            </label>
+          <div className="form-group">
+            <label className="form-label">Confirm Password</label>
             <input
               type="password"
               required
@@ -113,21 +111,14 @@ export default function RegisterPage() {
             />
           </div>
 
-          <button
-            type="submit"
-            disabled={loading}
-            className="btn-primary w-full"
-          >
+          <button type="submit" disabled={loading} className="btn-primary">
             {loading ? "Creating Account..." : "Sign Up"}
           </button>
         </form>
 
-        <p className="text-center mt-6 text-gray-600">
+        <p className="register-footer">
           Already have an account?{" "}
-          <Link
-            href="/login"
-            className="text-purple-600 font-semibold hover:underline"
-          >
+          <Link href="/login" className="login-link">
             Login
           </Link>
         </p>

@@ -46,12 +46,12 @@ export default function BirthDataForm({
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-6">
-      <h2 className="text-2xl font-bold mb-6">{title}</h2>
+    <form onSubmit={handleSubmit} className="birth-form">
+      <h2 className="form-title">{title}</h2>
 
-      <div>
-        <label className="block text-sm font-medium mb-2">
-          Birth Date <span className="text-red-500">*</span>
+      <div className="form-group">
+        <label className="form-group-label">
+          Birth Date <span className="form-required">*</span>
         </label>
         <input
           type="date"
@@ -65,9 +65,9 @@ export default function BirthDataForm({
         />
       </div>
 
-      <div>
-        <label className="block text-sm font-medium mb-2">
-          Birth Time <span className="text-red-500">*</span>
+      <div className="form-group">
+        <label className="form-group-label">
+          Birth Time <span className="form-required">*</span>
         </label>
         <input
           type="time"
@@ -78,14 +78,14 @@ export default function BirthDataForm({
             setFormData({ ...formData, birthTime: e.target.value })
           }
         />
-        <p className="text-xs text-gray-500 mt-1">
+        <p className="form-hint">
           Use 24-hour format (e.g., 15:30 for 3:30 PM)
         </p>
       </div>
 
-      <div>
-        <label className="block text-sm font-medium mb-2">
-          Birth Place <span className="text-red-500">*</span>
+      <div className="form-group">
+        <label className="form-group-label">
+          Birth Place <span className="form-required">*</span>
         </label>
         <input
           type="text"
@@ -95,38 +95,37 @@ export default function BirthDataForm({
           onChange={(e) => handlePlaceChange(e.target.value)}
           placeholder="City, Country (e.g., Bengaluru, India)"
         />
-        <p className="text-xs text-gray-500 mt-1">
+        <p className="form-hint">
           Enter city and country for accurate calculations
         </p>
       </div>
 
-      <div className="grid grid-cols-2 gap-4">
-        <div>
-          <label className="block text-sm font-medium mb-2">Timezone</label>
-          <select
-            className="input-field"
-            value={formData.timezone}
-            onChange={(e) =>
-              setFormData({ ...formData, timezone: e.target.value })
-            }
-          >
-            <option value="Asia/Kolkata">IST (India)</option>
-            <option value="America/New_York">EST (US East)</option>
-            <option value="America/Los_Angeles">PST (US West)</option>
-            <option value="Europe/London">GMT (UK)</option>
-            <option value="Australia/Sydney">AEDT (Australia)</option>
-          </select>
-        </div>
+      <div className="form-group">
+        <label className="form-group-label">Timezone</label>
+        <select
+          className="input-field"
+          value={formData.timezone}
+          onChange={(e) =>
+            setFormData({ ...formData, timezone: e.target.value })
+          }
+        >
+          <option value="Asia/Kolkata">IST (India)</option>
+          <option value="America/New_York">EST (US East)</option>
+          <option value="America/Los_Angeles">PST (US West)</option>
+          <option value="Europe/London">GMT (UK)</option>
+          <option value="Australia/Sydney">AEDT (Australia)</option>
+        </select>
       </div>
 
-      <div className="bg-purple-50 border border-purple-200 rounded-lg p-4">
-        <p className="text-sm text-purple-900">
-          <strong>Privacy Note:</strong> Your birth data is encrypted and never
-          shared. We use it only to calculate your astrological charts.
+      <div className="privacy-note">
+        <p className="privacy-note-text">
+          <span className="privacy-note-title">Privacy Note:</span> Your birth
+          data is encrypted and never shared. We use it only to calculate your
+          astrological charts.
         </p>
       </div>
 
-      <button type="submit" disabled={loading} className="btn-primary w-full">
+      <button type="submit" disabled={loading} className="btn-primary">
         {loading ? "Analyzing..." : "Continue"}
       </button>
     </form>
